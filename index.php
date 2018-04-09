@@ -1,9 +1,10 @@
 <html>
     <head>
+        <title>Chess</title>
         <style>
             td{
-                width: 40px;
-                height: 40px;
+                width: 80px;
+                height: 80px;
             }
             .wit{
                 background-color: oldlace;
@@ -41,23 +42,23 @@ function tabelmaken(){
         echo "<tr>";
         for($y=0; $y<$hb;$y++){
             if($x % 2){
-                echo bepaalkleur($y);
+                echo bepaalkleur($y,$x);
             }else{
-                echo bepaalkleur($y,true);
+                echo bepaalkleur($y, $x, true);
             }
         }
         echo "</tr>";
     }
     echo "</table>";
 }
-function bepaalkleur($positie, $omgekeerd = false){
+function bepaalkleur($posy, $posx, $omgekeerd = false){
     if($omgekeerd){
-        $positie++;
+        $posy++;
     }
-    if($positie % 2 == 0){
-        return "<td class=wit></td>";
+    if($posy % 2 == 0){
+        return "<td class=wit id=vakje".$posx.",".$posy."></td>";
     }else{
-        return "<td class=rood></td>";
+        return "<td class=rood id=vakje".$posx.",".$posy."></td>";
     }
 }
 
@@ -77,7 +78,7 @@ echo "</table>";
 ?>
         
         <br>
-        <input type="button" onclick="" value="Nieuw spel"
+        <input type="button" onclick="" value="Nieuw spel">
     </body>
 </html>
 
